@@ -20,7 +20,7 @@ Their original web app was receiving streaming series of financial data (OHLC ti
 We designed a Rust-based computation engine compiled to WebAssembly, offloaded all calculations to Web Workers, and pushed clean results back to the React state via SharedArrayBuffer.  
 As a result:
 
-- UI stayed smooth even with **100+ real-time widgets**
+- UI stayed smooth even with **1000+ real-time widgets**
 - React renders were minimal
 - Data throughput scaled linearly
 
