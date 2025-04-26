@@ -5,9 +5,9 @@
 Each widget is a self-contained unit:
 
 - A unique Web Worker per widget
-- Dedicated SharedArrayBuffer (SAB)
+- Dedicated SharedArrayBuffer
 - Server-pushed data stream
-- SMA (Simple Moving Average) computed via WebAssembly (WASM)
+- SMA computed via WebAssembly
 - Live-synced with React components
 
 ---
@@ -15,9 +15,9 @@ Each widget is a self-contained unit:
 ## 🎯 Use Case
 
 This prototype was developed as a **proof of concept (POC)** for a fintect client.  
-Their original web app was receiving streaming series of financial data (OHLC ticks) and computing live metrics like liquidity/gamma exposure heatmaps directly in the UI thread, which led to visible lags under load.
+Their original web app was receiving streaming series of financial data and computing live metrics like liquidity/gamma exposure heatmaps directly in the UI thread, which led to visible lags under load.
 
-We designed a Rust-based computation engine compiled to WebAssembly, offloaded all calculations to Web Workers, and pushed clean results back to the React state via SharedArrayBuffer.  
+Designed Rust-based computation engine compiled to WebAssembly, offloaded all calculations to Web Workers, and pushed clean results back to the React state via SharedArrayBuffer.  
 As a result:
 
 - UI stayed smooth even with **1000+ real-time widgets**
@@ -30,10 +30,10 @@ As a result:
 
 ```plaintext
 [ Server Push ] → [ Web Worker ] → [ WASM HEATMAP Engine (Rust) ]
-                                      ↓
-                            [ SharedArrayBuffer ]
-                                      ↓
-                            [ React Widget UI ]
+                                                 ↓
+                                        [ SharedArrayBuffer ]
+                                                 ↓
+                                         [ React Widget UI ]
 ```
 
 ---
